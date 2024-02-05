@@ -1,4 +1,4 @@
-package net.joelinrome.fusionreactors;
+package net.joelinrome.realisticfusionreactors;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,13 +14,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(FusionReactors.MOD_ID)
-public class FusionReactors
+@Mod(RealisticFusionReactors.MOD_ID)
+public class RealisticFusionReactors
 {
-    public static final String MOD_ID = "fusion_reactors";
+    public static final String MOD_ID = "realistic_fusion_reactors";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public FusionReactors() {
+    public RealisticFusionReactors() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

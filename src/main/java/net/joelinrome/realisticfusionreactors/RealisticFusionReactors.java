@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 @Mod(RealisticFusionReactors.MOD_ID)
 public class RealisticFusionReactors
 {
-    public static final String MOD_ID = "realistic_fusion_reactors";
+    public static final String MOD_ID = "realisticfusionreactors";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public RealisticFusionReactors() {

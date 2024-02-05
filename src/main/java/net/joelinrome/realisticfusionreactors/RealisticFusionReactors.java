@@ -1,6 +1,7 @@
 package net.joelinrome.realisticfusionreactors;
 
 import com.mojang.logging.LogUtils;
+import net.joelinrome.realisticfusionreactors.block.ModBlocks;
 import net.joelinrome.realisticfusionreactors.item.ModCreativeModTabs;
 import net.joelinrome.realisticfusionreactors.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
@@ -27,10 +28,9 @@ public class RealisticFusionReactors
     public RealisticFusionReactors() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        // registers new tab
         ModCreativeModTabs.register(modEventBus);
-        // registers new items
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

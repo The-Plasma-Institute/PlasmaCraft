@@ -2,5 +2,8 @@
   "item.realisticfusionreactors.sapphire": "Sapphire",
   "item.realisticfusionreactors.raw_sapphire": "Raw Sapphire",
 
+  "block.realisticfusionreactors.sapphire_block":  "Block of Sapphire",
+  "block.realisticfusionreactors.raw_sapphire_block":  "Block of Raw Sapphire",
+
   "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
 }

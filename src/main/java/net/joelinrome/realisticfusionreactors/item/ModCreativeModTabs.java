@@ -1,6 +1,7 @@
 package net.joelinrome.realisticfusionreactors.item;
 
 import net.joelinrome.realisticfusionreactors.RealisticFusionReactors;
+import net.joelinrome.realisticfusionreactors.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,6 +18,8 @@ public class ModCreativeModTabs {
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(ModItems.RAW_SAPPHIRE.get());
                 output.accept(ModItems.SAPPHIRE.get());
+                output.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());
+                output.accept(ModBlocks.SAPPHIRE_BLOCK.get());
             }))
             .build());
     public static void register(IEventBus eventBus) {

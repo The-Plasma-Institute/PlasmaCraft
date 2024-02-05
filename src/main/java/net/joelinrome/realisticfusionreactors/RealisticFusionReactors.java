@@ -1,6 +1,7 @@
 package net.joelinrome.realisticfusionreactors;
 
 import com.mojang.logging.LogUtils;
+import net.joelinrome.realisticfusionreactors.item.ModCreativeModTabs;
 import net.joelinrome.realisticfusionreactors.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -26,6 +27,8 @@ public class RealisticFusionReactors
     public RealisticFusionReactors() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // registers new tab
+        ModCreativeModTabs.register(modEventBus);
         // registers new items
         ModItems.register(modEventBus);
 
@@ -52,6 +55,7 @@ public class RealisticFusionReactors
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.SAPPHIRE);
+            event.accept(ModItems.RAW_SAPPHIRE);
         }
     }
 

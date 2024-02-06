@@ -5,5 +5,10 @@
   "block.realisticfusionreactors.sapphire_block":  "Block of Sapphire",
   "block.realisticfusionreactors.raw_sapphire_block":  "Block of Raw Sapphire",
 
+  "block.realisticfusionreactors.sapphire_ore":  "Sapphire Ore",
+  "block.realisticfusionreactors.deepslate_sapphire_ore":  "Deepslate Sapphire Ore",
+  "block.realisticfusionreactors.nether_sapphire_ore":  "Nether Sapphire Ore",
+  "block.realisticfusionreactors.end_stone_sapphire_ore":  "End Stone Sapphire Ore",
+
   "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
 }

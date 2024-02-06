@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "realisticfusionreactors:sapphire"
+    }
+  },
+  "result": {
+    "item": "realisticfusionreactors:sapphire_block"
+  }
+}

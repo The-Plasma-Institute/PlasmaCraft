@@ -29,12 +29,13 @@ public class RealisticFusionReactors
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
-        MinecraftForge.EVENT_BUS.register(this);
 
+        MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 //        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }

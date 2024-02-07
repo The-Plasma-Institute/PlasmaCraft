@@ -21,7 +21,10 @@ public class ModCreativeModTabs {
                 output.accept(ModItems.SAPPHIRE.get());
 
                 output.accept(ModItems.METAL_DETECTOR.get());
+
                 output.accept(ModItems.STRAWBERRY.get());
+                output.accept(ModItems.PINE_CONE.get());
+
                 output.accept(ModBlocks.SOUND_BLOCK.get());
 
                 output.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());

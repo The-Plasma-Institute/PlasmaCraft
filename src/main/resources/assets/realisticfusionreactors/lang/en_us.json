@@ -3,9 +3,13 @@
   "item.realisticfusionreactors.raw_sapphire": "Raw Sapphire",
 
   "item.realisticfusionreactors.metal_detector":  "Metal Detector",
+  "tooltip.realisticfusionreactors.metal_detector.tooltip": "Finds valuables underground",
+
   "item.realisticfusionreactors.strawberry":  "Strawberry",
   "item.realisticfusionreactors.pine_cone":  "Pine Cone",
+
   "block.realisticfusionreactors.sound_block":  "Sound Block",
+  "tooltip.realisticfusionreactors.sound_block.tooltip": "Makes sweet sounds when right-clicked!",
 
   "block.realisticfusionreactors.sapphire_block":  "Block of Sapphire",
   "block.realisticfusionreactors.raw_sapphire_block":  "Block of Raw Sapphire",

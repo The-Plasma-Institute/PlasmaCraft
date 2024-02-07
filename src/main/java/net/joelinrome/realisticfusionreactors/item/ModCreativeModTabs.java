@@ -13,13 +13,15 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, RealisticFusionReactors.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> TUTORIAL_TAB = CREATIVE_MODE_TABS.register("tutorial_tab", () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SAPPHIRE.get()))
+    public static final RegistryObject<CreativeModeTab> TUTORIAL_TAB = CREATIVE_MODE_TABS
+            .register("tutorial_tab", () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SAPPHIRE.get()))
             .title(Component.translatable("creativetab.tutorial_tab"))
             .displayItems(((itemDisplayParameters, output) -> {
                 output.accept(ModItems.RAW_SAPPHIRE.get());
                 output.accept(ModItems.SAPPHIRE.get());
 
                 output.accept(ModItems.METAL_DETECTOR.get());
+                output.accept(ModItems.STRAWBERRY.get());
                 output.accept(ModBlocks.SOUND_BLOCK.get());
 
                 output.accept(ModBlocks.RAW_SAPPHIRE_BLOCK.get());

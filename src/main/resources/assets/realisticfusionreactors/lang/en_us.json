@@ -19,5 +19,15 @@
   "block.realisticfusionreactors.nether_sapphire_ore":  "Nether Sapphire Ore",
   "block.realisticfusionreactors.end_stone_sapphire_ore":  "End Stone Sapphire Ore",
 
+  "block.realisticfusionreactors.sapphire_stairs": "Sapphire Stairs",
+  "block.realisticfusionreactors.sapphire_slab": "Sapphire Slab",
+  "block.realisticfusionreactors.sapphire_button": "Sapphire Button",
+  "block.realisticfusionreactors.sapphire_pressure_plate": "Sapphire Pressure Plate",
+  "block.realisticfusionreactors.sapphire_fence": "Sapphire Fence",
+  "block.realisticfusionreactors.sapphire_fence_gate": "Sapphire Fence Gate",
+  "block.realisticfusionreactors.sapphire_wall": "Sapphire Wall",
+  "block.realisticfusionreactors.sapphire_door": "Sapphire Door",
+  "block.realisticfusionreactors.sapphire_trapdoor": "Sapphire Trapdoor",
+  
   "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
 }

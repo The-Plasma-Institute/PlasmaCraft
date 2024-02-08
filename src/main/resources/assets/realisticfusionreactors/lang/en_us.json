@@ -9,6 +9,12 @@
   "item.realisticfusionreactors.pine_cone":  "Pine Cone",
   "item.realisticfusionreactors.sapphire_staff":  "Sapphire Staff",
 
+  "item.realisticfusionreactors.sapphire_sword": "Sapphire Sword",
+  "item.realisticfusionreactors.sapphire_pickaxe": "Sapphire Pickaxe",
+  "item.realisticfusionreactors.sapphire_axe": "Sapphire Axe",
+  "item.realisticfusionreactors.sapphire_shovel": "Sapphire Shovel",
+  "item.realisticfusionreactors.sapphire_hoe": "Sapphire Hoe",
+
   "block.realisticfusionreactors.sound_block":  "Sound Block",
   "tooltip.realisticfusionreactors.sound_block.tooltip": "Makes sweet sounds when right-clicked!",
 

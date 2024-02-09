@@ -15,6 +15,11 @@
   "item.realisticfusionreactors.sapphire_shovel": "Sapphire Shovel",
   "item.realisticfusionreactors.sapphire_hoe": "Sapphire Hoe",
 
+  "item.realisticfusionreactors.sapphire_helmet": "Sapphire Helmet",
+  "item.realisticfusionreactors.sapphire_chestplate": "Sapphire Chestplate",
+  "item.realisticfusionreactors.sapphire_leggings": "Sapphire Leggings",
+  "item.realisticfusionreactors.sapphire_boots": "Sapphire Boots",
+
   "block.realisticfusionreactors.sound_block":  "Sound Block",
   "tooltip.realisticfusionreactors.sound_block.tooltip": "Makes sweet sounds when right-clicked!",
 

@@ -2,9 +2,13 @@ package net.joelinrome.realisticfusionreactors;
 
 import com.mojang.logging.LogUtils;
 import net.joelinrome.realisticfusionreactors.block.ModBlocks;
+import net.joelinrome.realisticfusionreactors.block.entity.ModBlockEntities;
 import net.joelinrome.realisticfusionreactors.item.ModCreativeModTabs;
 import net.joelinrome.realisticfusionreactors.item.ModItems;
+import net.joelinrome.realisticfusionreactors.screen.GemPolishingStationScreen;
+import net.joelinrome.realisticfusionreactors.screen.ModMenuTypes;
 import net.joelinrome.realisticfusionreactors.sound.ModSounds;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -34,6 +38,8 @@ public class RealisticFusionReactors
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -72,6 +78,7 @@ public class RealisticFusionReactors
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+            MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
         }
     }
 }

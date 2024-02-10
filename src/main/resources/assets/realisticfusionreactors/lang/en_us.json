@@ -49,6 +49,8 @@
   "block.realisticfusionreactors.sapphire_wall": "Sapphire Wall",
   "block.realisticfusionreactors.sapphire_door": "Sapphire Door",
   "block.realisticfusionreactors.sapphire_trapdoor": "Sapphire Trapdoor",
-  
+
+  "block.realisticfusionreactors.gem_polishing_station": "Gem Polishing Station",
+
   "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
 }

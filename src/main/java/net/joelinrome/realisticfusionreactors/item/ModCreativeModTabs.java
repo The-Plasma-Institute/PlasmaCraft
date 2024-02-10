@@ -25,6 +25,7 @@ public class ModCreativeModTabs {
                 output.accept(ModItems.STRAWBERRY.get());
                 output.accept(ModItems.PINE_CONE.get());
                 output.accept(ModItems.SAPPHIRE_STAFF.get());
+                output.accept(ModItems.BAR_BRAWL_MUSIC_DISC.get());
 
                 output.accept(ModItems.SAPPHIRE_SWORD.get());
                 output.accept(ModItems.SAPPHIRE_PICKAXE.get());

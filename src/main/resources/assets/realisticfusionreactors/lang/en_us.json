@@ -29,6 +29,9 @@
   "sounds.realisticfusionreactors.sound_block_place": "Sound block place",
   "sounds.realisticfusionreactors.sound_block_hit": "Sound block hit",
 
+  "item.realisticfusionreactors.bar_brawl_music_disc": "Bar Brawl Music Disc",
+  "item.realisticfusionreactors.bar_brawl_music_disc.desc": "Byran Tech - Bar Brawl (CC0)",
+
   "block.realisticfusionreactors.sapphire_block":  "Block of Sapphire",
   "block.realisticfusionreactors.raw_sapphire_block":  "Block of Raw Sapphire",
 

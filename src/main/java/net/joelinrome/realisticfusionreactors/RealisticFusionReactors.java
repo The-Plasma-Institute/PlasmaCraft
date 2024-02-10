@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.joelinrome.realisticfusionreactors.block.ModBlocks;
 import net.joelinrome.realisticfusionreactors.item.ModCreativeModTabs;
 import net.joelinrome.realisticfusionreactors.item.ModItems;
+import net.joelinrome.realisticfusionreactors.sound.ModSounds;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,6 +33,7 @@ public class RealisticFusionReactors
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

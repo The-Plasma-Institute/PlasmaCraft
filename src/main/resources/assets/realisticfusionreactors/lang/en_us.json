@@ -4,6 +4,7 @@
 
   "item.realisticfusionreactors.metal_detector":  "Metal Detector",
   "tooltip.realisticfusionreactors.metal_detector.tooltip": "Finds valuables underground",
+  "sounds.realisticfusionreactors.metal_detector_found_ore":  "Metal detector beep",
 
   "item.realisticfusionreactors.strawberry":  "Strawberry",
   "item.realisticfusionreactors.pine_cone":  "Pine Cone",
@@ -22,6 +23,11 @@
 
   "block.realisticfusionreactors.sound_block":  "Sound Block",
   "tooltip.realisticfusionreactors.sound_block.tooltip": "Makes sweet sounds when right-clicked!",
+  "sounds.realisticfusionreactors.sound_block_break": "Sound block hit",
+  "sounds.realisticfusionreactors.sound_block_step": "Sound block step",
+  "sounds.realisticfusionreactors.sound_block_fall": "Sound block fall",
+  "sounds.realisticfusionreactors.sound_block_place": "Sound block place",
+  "sounds.realisticfusionreactors.sound_block_hit": "Sound block hit",
 
   "block.realisticfusionreactors.sapphire_block":  "Block of Sapphire",
   "block.realisticfusionreactors.raw_sapphire_block":  "Block of Raw Sapphire",

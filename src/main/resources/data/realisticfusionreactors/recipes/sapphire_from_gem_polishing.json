@@ -1,0 +1,12 @@
+{
+  "type": "realisticfusionreactors:gem_polishing",
+  "ingredients": [
+    {
+      "item": "realisticfusionreactors:raw_sapphire"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "item": "realisticfusionreactors:sapphire"
+  }
+}

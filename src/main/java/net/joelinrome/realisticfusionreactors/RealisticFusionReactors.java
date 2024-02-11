@@ -5,6 +5,7 @@ import net.joelinrome.realisticfusionreactors.block.ModBlocks;
 import net.joelinrome.realisticfusionreactors.block.entity.ModBlockEntities;
 import net.joelinrome.realisticfusionreactors.item.ModCreativeModTabs;
 import net.joelinrome.realisticfusionreactors.item.ModItems;
+import net.joelinrome.realisticfusionreactors.repice.ModRecipes;
 import net.joelinrome.realisticfusionreactors.screen.GemPolishingStationScreen;
 import net.joelinrome.realisticfusionreactors.screen.ModMenuTypes;
 import net.joelinrome.realisticfusionreactors.sound.ModSounds;
@@ -40,6 +41,7 @@ public class RealisticFusionReactors
         ModSounds.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

@@ -7,6 +7,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -30,7 +33,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class GemPolishingStationBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            // Simply triggers the block to get updated for all users
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
 
     // Describes the two slots available in the gem polisher
     // Imagine them like an array in python and here we're just defining which one is which
@@ -69,6 +81,14 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
                 return 2; // Should equal the count for the number cases defined above
             }
         };
+    }
+
+    public ItemStack getRenderStack() {
+        if (itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty()) {
+            return itemHandler.getStackInSlot(INPUT_SLOT);
+        } else {
+            return itemHandler.getStackInSlot(OUTPUT_SLOT);
+        }
     }
 
     /**
@@ -217,5 +237,14 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
 
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
 }

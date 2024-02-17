@@ -42,7 +42,7 @@ On the right hand side of IntelliJ you'll see a elephant icon called Gradle whic
 > [!IMPORTANT]
 > All the commands will run in a terminal at the bottom, please wait for them to finish with the words `BUILD SUCCESSFUL` before starting another one. Some of these commands take a good minute to run so please be patient
 
-1. Open `forgegradle runs`
+1. Open the `forgegradle runs` folder
 2. Run `genIntelliJRuns` - This only needs to be run whenever we add a new mod to our list otherwise just run it once
 3. Run `runData` - This generates the minecraft textures for all of the custom items we have added and needs to be run every time we change one of the textures
 4. Run `runClient` - This should actually boot up minecraft and should allow you to explore and play the game.

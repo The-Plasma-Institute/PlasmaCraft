@@ -1,0 +1,12 @@
+{
+  "type": "plasmacraft:gem_polishing",
+  "ingredients": [
+    {
+      "item": "plasmacraft:raw_sapphire"
+    }
+  ],
+  "output": {
+    "count": 3,
+    "item": "plasmacraft:sapphire"
+  }
+}

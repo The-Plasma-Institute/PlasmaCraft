@@ -1,0 +1,56 @@
+{
+  "item.plasmacraft.sapphire": "Sapphire",
+  "item.plasmacraft.raw_sapphire": "Raw Sapphire",
+
+  "item.plasmacraft.metal_detector":  "Metal Detector",
+  "tooltip.plasmacraft.metal_detector.tooltip": "Finds valuables underground",
+  "sounds.plasmacraft.metal_detector_found_ore":  "Metal detector beep",
+
+  "item.plasmacraft.strawberry":  "Strawberry",
+  "item.plasmacraft.pine_cone":  "Pine Cone",
+  "item.plasmacraft.sapphire_staff":  "Sapphire Staff",
+
+  "item.plasmacraft.sapphire_sword": "Sapphire Sword",
+  "item.plasmacraft.sapphire_pickaxe": "Sapphire Pickaxe",
+  "item.plasmacraft.sapphire_axe": "Sapphire Axe",
+  "item.plasmacraft.sapphire_shovel": "Sapphire Shovel",
+  "item.plasmacraft.sapphire_hoe": "Sapphire Hoe",
+
+  "item.plasmacraft.sapphire_helmet": "Sapphire Helmet",
+  "item.plasmacraft.sapphire_chestplate": "Sapphire Chestplate",
+  "item.plasmacraft.sapphire_leggings": "Sapphire Leggings",
+  "item.plasmacraft.sapphire_boots": "Sapphire Boots",
+
+  "block.plasmacraft.sound_block":  "Sound Block",
+  "tooltip.plasmacraft.sound_block.tooltip": "Makes sweet sounds when right-clicked!",
+  "sounds.plasmacraft.sound_block_break": "Sound block hit",
+  "sounds.plasmacraft.sound_block_step": "Sound block step",
+  "sounds.plasmacraft.sound_block_fall": "Sound block fall",
+  "sounds.plasmacraft.sound_block_place": "Sound block place",
+  "sounds.plasmacraft.sound_block_hit": "Sound block hit",
+
+  "item.plasmacraft.bar_brawl_music_disc": "Bar Brawl Music Disc",
+  "item.plasmacraft.bar_brawl_music_disc.desc": "Byran Tech - Bar Brawl (CC0)",
+
+  "block.plasmacraft.sapphire_block":  "Block of Sapphire",
+  "block.plasmacraft.raw_sapphire_block":  "Block of Raw Sapphire",
+
+  "block.plasmacraft.sapphire_ore":  "Sapphire Ore",
+  "block.plasmacraft.deepslate_sapphire_ore":  "Deepslate Sapphire Ore",
+  "block.plasmacraft.nether_sapphire_ore":  "Nether Sapphire Ore",
+  "block.plasmacraft.end_stone_sapphire_ore":  "End Stone Sapphire Ore",
+
+  "block.plasmacraft.sapphire_stairs": "Sapphire Stairs",
+  "block.plasmacraft.sapphire_slab": "Sapphire Slab",
+  "block.plasmacraft.sapphire_button": "Sapphire Button",
+  "block.plasmacraft.sapphire_pressure_plate": "Sapphire Pressure Plate",
+  "block.plasmacraft.sapphire_fence": "Sapphire Fence",
+  "block.plasmacraft.sapphire_fence_gate": "Sapphire Fence Gate",
+  "block.plasmacraft.sapphire_wall": "Sapphire Wall",
+  "block.plasmacraft.sapphire_door": "Sapphire Door",
+  "block.plasmacraft.sapphire_trapdoor": "Sapphire Trapdoor",
+
+  "block.plasmacraft.gem_polishing_station": "Gem Polishing Station",
+
+  "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
+}

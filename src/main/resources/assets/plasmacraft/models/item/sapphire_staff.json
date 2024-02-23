@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "plasmacraft:item/sapphire_staff_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "plasmacraft:item/sapphire_staff_2d"
+    },
+    "ground": {
+      "parent": "plasmacraft:item/sapphire_staff_2d"
+    },
+    "fixed": {
+      "parent": "plasmacraft:item/sapphire_staff_2d"
+    }
+  }
+}

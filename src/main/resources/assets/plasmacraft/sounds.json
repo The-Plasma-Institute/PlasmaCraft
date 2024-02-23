@@ -1,0 +1,46 @@
+{
+  "metal_detector_found_ore": {
+    "subtitles": "sounds.plasmacraft.metal_detector_found_ore",
+    "sounds": [
+      "plasmacraft:metal_detector_found_ore"
+    ]
+  },
+  "sound_block_break": {
+    "subtitle": "sounds.plasmacraft.sound_block_break",
+    "sounds": [
+      "plasmacraft:sound_block_break"
+    ]
+  },
+  "sound_block_step": {
+    "subtitle": "sounds.plasmacraft.sound_block_step",
+    "sounds": [
+      "plasmacraft:sound_block_step"
+    ]
+  },
+  "sound_block_place": {
+    "subtitle": "sounds.plasmacraft.sound_block_place",
+    "sounds": [
+      "plasmacraft:sound_block_place"
+    ]
+  },
+  "sound_block_hit": {
+    "subtitle": "sounds.plasmacraft.sound_block_hit",
+    "sounds": [
+      "plasmacraft:sound_block_hit"
+    ]
+  },
+  "sound_block_fall": {
+    "subtitle": "sounds.plasmacraft.sound_block_fall",
+    "sounds": [
+      "plasmacraft:sound_block_fall"
+    ]
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "plasmacraft:bar_brawl",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "plasmacraft:item/sapphire_staff"
+  }
+}

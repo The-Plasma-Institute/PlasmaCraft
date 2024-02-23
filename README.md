@@ -29,7 +29,7 @@ Now that you've installed both of these create a new project specifying the java
 ## Installing the code
 Firstly install the code into a folder of your choosing:
 
-`git clone https://github.com/JoelLucaAdams/realistic-fusion-reactors-forge-1.20.1.git`
+`git clone https://github.com/JoelLucaAdams/PlasmaCraft.git`
 
 Once installed open the folder from IntelliJ and check that SDK version is set to 17. To do this press the `ALT+;` keys or `cmd+;` on MacOS.
 

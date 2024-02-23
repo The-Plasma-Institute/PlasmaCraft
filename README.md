@@ -20,13 +20,16 @@ Then type the following and check that it says `17`:
 
 `java -version`
 
-Then navigate to the `Software` application and install intelliJ
-
 ## IDE
-Download the Jetbrains [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) IDE. 
 
 > [!TIP]
 > Since we're students we have access to the IntelliJ IDEA Ultimate edition, you'll just need to create an account and specify you're a student. Alternatively you can use the IntelliJ IDEA Community Edition
+
+### Windows and macOS
+Download the Jetbrains [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) IDE.
+
+### Linux
+Navigate to the `Software` application and install JetBrains IntelliJ IDEA
 
 ## Testing your progress
 Now that you've installed both of these create a new project specifying the java version to be `temurin-17...`. Once the project is created attempt to run the code in the top right with the green play button.

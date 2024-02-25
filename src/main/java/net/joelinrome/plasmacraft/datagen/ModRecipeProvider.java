@@ -2,6 +2,7 @@ package net.joelinrome.plasmacraft.datagen;
 
 import net.joelinrome.plasmacraft.PlasmaCraft;
 import net.joelinrome.plasmacraft.block.ModBlocks;
+import net.joelinrome.plasmacraft.datagen.custom.DeuteriumExtractorRecipeBuilder;
 import net.joelinrome.plasmacraft.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -45,6 +46,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SAPPHIRE.get(), 9)
                 .requires(ModBlocks.SAPPHIRE_BLOCK.get())
                 .unlockedBy(getHasName(ModBlocks.SAPPHIRE_BLOCK.get()), has(ModBlocks.SAPPHIRE_BLOCK.get()))
+                .save(consumer);
+
+        new DeuteriumExtractorRecipeBuilder(ModItems.RAW_SAPPHIRE.get(), ModItems.SAPPHIRE.get(), 3)
+                .unlockedBy("has_raw_sapphire", has(ModItems.RAW_SAPPHIRE.get()))
                 .save(consumer);
     }
 

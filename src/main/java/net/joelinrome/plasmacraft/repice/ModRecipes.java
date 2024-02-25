@@ -14,6 +14,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<GemPolishingRecipe>> GEM_POLISHING_SERIALIZER =
             SERIALIZERS.register("gem_polishing", () -> GemPolishingRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<DeuteriumExtractorRecipe>> DEUTERIUM_EXTRACTOR_SERIALIZER =
+            SERIALIZERS.register("deuterium_extractor", () -> DeuteriumExtractorRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

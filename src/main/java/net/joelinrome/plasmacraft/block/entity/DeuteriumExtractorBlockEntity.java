@@ -1,6 +1,7 @@
 package net.joelinrome.plasmacraft.block.entity;
 
 import net.joelinrome.plasmacraft.item.ModItems;
+import net.joelinrome.plasmacraft.repice.DeuteriumExtractorRecipe;
 import net.joelinrome.plasmacraft.screen.DeuteriumExtractorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,6 +28,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 // Extends BlockEntity for display and management of systems whereas MenuProvider links it to a gui menu
 public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuProvider {
     // Defines which slot is which
@@ -50,8 +53,7 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0 -> stack.getItem() == ModItems.RAW_SAPPHIRE.get();
-                case 1 -> true;
+                case 0, 1 -> true;
                 case 2 -> false;
                 case 3 -> stack.getItem() == Items.COAL;
                 default -> super.isItemValid(slot, stack);
@@ -154,12 +156,15 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
     }
 
     private void craftItem() {
+        Optional<DeuteriumExtractorRecipe> recipe = getCurrentRecipe();
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
         // Takes 1 item out of the input slot
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         // Adds 1 item into the output slot of type SAPPHIRE
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(ModItems.SAPPHIRE.get(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 1));
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
     }
 
     private void resetProgress() {
@@ -175,12 +180,26 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
     }
 
     private boolean hasRecipe() {
-        return canInsertAmountIntoOutputSlot(1) && canInsertItemIntoOutputSlot(ModItems.SAPPHIRE.get())
-                && hasRecipeItemInInputSlot();
+        Optional<DeuteriumExtractorRecipe> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(resultItem.getCount())
+                && canInsertItemIntoOutputSlot(resultItem.getItem());
     }
 
-    private boolean hasRecipeItemInInputSlot() {
-        return this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.RAW_SAPPHIRE.get();
+    /**
+     * Gets all available recipes for GemPolishingRecipe and runs them against the DeuteriumExtractorRecipe.matches()
+     */
+    private Optional<DeuteriumExtractorRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+        return this.level.getRecipeManager().getRecipeFor(DeuteriumExtractorRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

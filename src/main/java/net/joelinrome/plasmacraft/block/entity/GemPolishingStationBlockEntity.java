@@ -140,7 +140,7 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
      */
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT()); // Saves all items within the block to the key "inventory"
+        pTag.put("gem_polishing_inventory", itemHandler.serializeNBT()); // Saves all items within the block to the key "inventory"
         pTag.putInt("gem_polishing_station.progress", progress); // Saves the current block progress
         super.saveAdditional(pTag);
     }
@@ -151,7 +151,7 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        itemHandler.deserializeNBT(pTag.getCompound("gem_polishing_inventory"));
         progress = pTag.getInt("gem_polishing_station.progress");
     }
 

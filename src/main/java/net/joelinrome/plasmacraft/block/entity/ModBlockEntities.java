@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(GemPolishingStationBlockEntity::new,
                             ModBlocks.GEM_POLISHING_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<DeuteriumExtractorBlockEntity>> DEUTERIUM_EXTRACTOR_BE =
+            BLOCK_ENTITIES.register("deuterium_extractor_be", () ->
+                    BlockEntityType.Builder.of(DeuteriumExtractorBlockEntity::new,
+                            ModBlocks.DEUTERIUM_EXTRACTOR_BLOCK.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

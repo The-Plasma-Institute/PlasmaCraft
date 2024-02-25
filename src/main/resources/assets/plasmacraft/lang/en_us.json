@@ -51,6 +51,8 @@
   "block.plasmacraft.sapphire_trapdoor": "Sapphire Trapdoor",
 
   "block.plasmacraft.gem_polishing_station": "Gem Polishing Station",
+  "block.plasmacraft.deuterium_extractor": "Deuterium Extractor",
 
-  "creativetab.tutorial_tab": "Sapphire Tutorial Tab"
+  "creativetab.tutorial_tab": "Sapphire Tutorial Tab",
+  "creativetab.plasmacraft_tab": "PlasmaCraft"
 }

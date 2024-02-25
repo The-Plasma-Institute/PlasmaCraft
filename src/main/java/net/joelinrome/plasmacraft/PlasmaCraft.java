@@ -6,6 +6,7 @@ import net.joelinrome.plasmacraft.block.entity.ModBlockEntities;
 import net.joelinrome.plasmacraft.item.ModCreativeModTabs;
 import net.joelinrome.plasmacraft.item.ModItems;
 import net.joelinrome.plasmacraft.repice.ModRecipes;
+import net.joelinrome.plasmacraft.screen.DeuteriumExtractorScreen;
 import net.joelinrome.plasmacraft.screen.GemPolishingStationScreen;
 import net.joelinrome.plasmacraft.screen.ModMenuTypes;
 import net.joelinrome.plasmacraft.sound.ModSounds;
@@ -25,8 +26,7 @@ import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(PlasmaCraft.MOD_ID)
-public class PlasmaCraft
-{
+public class PlasmaCraft {
     public static final String MOD_ID = "plasmacraft";
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -78,8 +78,10 @@ public class PlasmaCraft
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
-            MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
+            event.enqueueWork(() -> {
+                MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
+                MenuScreens.register(ModMenuTypes.DEUTERIUM_EXTRACTOR_MENU.get(), DeuteriumExtractorScreen::new);
+            });
         }
     }
 }

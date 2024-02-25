@@ -1,6 +1,7 @@
 package net.joelinrome.plasmacraft.block;
 
 import net.joelinrome.plasmacraft.PlasmaCraft;
+import net.joelinrome.plasmacraft.block.custom.DeuteriumExtractorBlock;
 import net.joelinrome.plasmacraft.block.custom.GemPolishingStationBlock;
 import net.joelinrome.plasmacraft.block.custom.SoundBlock;
 import net.joelinrome.plasmacraft.item.ModItems;
@@ -46,6 +47,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_TRAPDOOR = registerBlock("sapphire_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST).noOcclusion(), BlockSetType.IRON));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registerBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
+    public static final RegistryObject<Block> DEUTERIUM_EXTRACTOR_BLOCK = registerBlock("deuterium_extractor", () -> new DeuteriumExtractorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

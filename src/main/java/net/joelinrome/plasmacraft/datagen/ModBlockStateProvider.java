@@ -40,6 +40,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         trapdoorBlockWithRenderType(((TrapDoorBlock) ModBlocks.SAPPHIRE_TRAPDOOR.get()), modLoc("block/sapphire_door_bottom"), true, "cutout");
 
         simpleBlockWithItem(ModBlocks.GEM_POLISHING_STATION.get(), new ModelFile.UncheckedModelFile(modLoc("block/gem_polishing_station")));
+
+        horizontalBlock(ModBlocks.DEUTERIUM_EXTRACTOR_BLOCK.get(), new ModelFile.UncheckedModelFile(modLoc("block/deuterium_extractor")));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

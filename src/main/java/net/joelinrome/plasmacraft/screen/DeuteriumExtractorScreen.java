@@ -2,6 +2,8 @@ package net.joelinrome.plasmacraft.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.joelinrome.plasmacraft.PlasmaCraft;
+import net.joelinrome.plasmacraft.screen.renderer.EnergyDisplayTooltipArea;
+import net.joelinrome.plasmacraft.util.MouseUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -9,9 +11,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
+import java.util.Optional;
+
 public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumExtractorMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(PlasmaCraft.MOD_ID,"textures/gui/deuterium_extractor_gui.png");
+    private EnergyDisplayTooltipArea energyInfoArea;
 
     public DeuteriumExtractorScreen(DeuteriumExtractorMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -23,6 +28,37 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         // Simply hide the labels so they don't appear on screen
         this.inventoryLabelY = 100000;
         this.titleLabelY = 10000;
+        
+        assignEnergyInfoArea();
+    }
+
+    @Override
+    protected void renderLabels(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+        renderEnergyAreaTooltip(pGuiGraphics, pMouseX, pMouseY, x, y);
+    }
+
+    private void renderEnergyAreaTooltip(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, int x, int y) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 156, 11, 8, 64)) {
+            pGuiGraphics.renderTooltip(
+                    this.font,
+                    energyInfoArea.getTooltips(),
+                    Optional.empty(),
+                    pMouseX - x,
+                    pMouseY - y
+            );
+        }
+    }
+
+
+    private void assignEnergyInfoArea() {
+        energyInfoArea = new EnergyDisplayTooltipArea(
+                (width - imageWidth) / 2 + 156,
+                (height - imageHeight) / 2 + 11,
+                menu.blockEntity.getEnergyStorage()
+        );
     }
 
     @Override
@@ -37,7 +73,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
 
         renderProgressArrow(guiGraphics, x, y);
 
-//        energyInfoArea.render(guiGraphics);
+        energyInfoArea.render(guiGraphics);
 //        fluidRenderer.render(guiGraphics, x + 26, y + 11, menu.blockEntity.getFluid());
     }
 
@@ -52,5 +88,12 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         renderBackground(pGuiGraphics);
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+    }
+
+    private boolean isMouseAboveArea(int pMouseX, int pMouseY,
+                                     int x, int y,
+                                     int offsetX, int offsetY,
+                                     int width, int height) {
+        return MouseUtil.isMouseOver(pMouseX, pMouseY, x+offsetX, y+offsetY, width, height);
     }
 }

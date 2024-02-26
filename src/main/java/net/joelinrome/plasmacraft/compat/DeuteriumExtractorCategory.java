@@ -15,7 +15,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public class DeuteriumExtractorRecipies implements IRecipeCategory<DeuteriumExtractorRecipe> {
+public class DeuteriumExtractorCategory implements IRecipeCategory<DeuteriumExtractorRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(PlasmaCraft.MOD_ID, "deuterium_extracting");
     public static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID,
              "textures/gui/deuterium_exractor_gui.png");
@@ -26,7 +26,7 @@ public class DeuteriumExtractorRecipies implements IRecipeCategory<DeuteriumExtr
     private final IDrawable background;
     private final IDrawable icon;
 
-    public DeuteriumExtractorRecipies(IGuiHelper helper) {
+    public DeuteriumExtractorCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.DEUTERIUM_EXTRACTOR_BLOCK.get()));
     }
@@ -38,7 +38,7 @@ public class DeuteriumExtractorRecipies implements IRecipeCategory<DeuteriumExtr
 
     @Override
     public Component getTitle() {
-        return Component.literal("Deuterium Extractor");
+        return Component.translatable("block.plasmacraft.deuterium_extractor");
     }
 
     @Override

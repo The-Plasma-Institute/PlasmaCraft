@@ -1,7 +1,6 @@
 package net.joelinrome.plasmacraft.block.entity;
 
-import net.joelinrome.plasmacraft.item.ModItems;
-import net.joelinrome.plasmacraft.repice.DeuteriumExtractorRecipe;
+import net.joelinrome.plasmacraft.recipe.DeuteriumExtractorRecipe;
 import net.joelinrome.plasmacraft.screen.DeuteriumExtractorMenu;
 import net.joelinrome.plasmacraft.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;

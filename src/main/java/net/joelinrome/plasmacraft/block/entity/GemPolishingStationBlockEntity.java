@@ -1,6 +1,6 @@
 package net.joelinrome.plasmacraft.block.entity;
 
-import net.joelinrome.plasmacraft.repice.GemPolishingRecipe;
+import net.joelinrome.plasmacraft.recipe.GemPolishingRecipe;
 import net.joelinrome.plasmacraft.screen.GemPolishingStationMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

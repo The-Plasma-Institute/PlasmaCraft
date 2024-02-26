@@ -18,7 +18,7 @@ import net.minecraft.world.item.ItemStack;
 public class DeuteriumExtractorCategory implements IRecipeCategory<DeuteriumExtractorRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(PlasmaCraft.MOD_ID, "deuterium_extracting");
     public static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID,
-             "textures/gui/deuterium_exractor_gui.png");
+             "textures/gui/deuterium_extractor_gui.png");
 
     public static final RecipeType<DeuteriumExtractorRecipe> DEUTERIUM_EXTRACTOR_TYPE =
             new RecipeType<>(UID, DeuteriumExtractorRecipe.class);
@@ -27,7 +27,7 @@ public class DeuteriumExtractorCategory implements IRecipeCategory<DeuteriumExtr
     private final IDrawable icon;
 
     public DeuteriumExtractorCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 80);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.DEUTERIUM_EXTRACTOR_BLOCK.get()));
     }
 

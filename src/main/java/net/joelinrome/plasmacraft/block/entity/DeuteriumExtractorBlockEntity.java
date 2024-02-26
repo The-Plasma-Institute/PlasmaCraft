@@ -25,12 +25,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +63,8 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return switch (slot) {
-                case 0, 1 -> true;
+                case 0 -> true;
+                case 1 -> stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
                 case 2 -> false;
                 case 3 -> stack.getItem() == Items.COAL;
                 default -> super.isItemValid(slot, stack);
@@ -70,12 +75,15 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty(); // Stores current items in block
 
     private LazyOptional<IEnergyStorage> lazyEnergyHandler = LazyOptional.empty();
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78; // Change this to however long you want it to take to output item
 
     private final ModEnergyStorage ENERGY_STORAGE = createEnergyStorage();
+    private final FluidTank FLUID_TANK = createFluidTank();
+
 
     private ModEnergyStorage createEnergyStorage() {
         return new ModEnergyStorage(64000, 200) {
@@ -83,6 +91,23 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
             public void onEnergyChanged() {
                 setChanged();
                 getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        };
+    }
+
+    private FluidTank createFluidTank() {
+        return new FluidTank(64000) {
+            @Override
+            protected void onContentsChanged() {
+                setChanged();
+                if(!level.isClientSide()) {
+                    level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                }
+            }
+
+            @Override
+            public boolean isFluidValid(FluidStack stack) {
+                return stack.getFluid() == Fluids.WATER;
             }
         };
     }
@@ -116,7 +141,7 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
 
     public IEnergyStorage getEnergyStorage() {
         return this.ENERGY_STORAGE;
-    }
+    };
 
     @Override
     public Component getDisplayName() {
@@ -134,6 +159,9 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
         if(cap == ForgeCapabilities.ENERGY) {
             return lazyEnergyHandler.cast();
         }
+        if(cap == ForgeCapabilities.FLUID_HANDLER) {
+            return lazyFluidHandler.cast();
+        }
 
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
@@ -146,6 +174,7 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler); // Makes sure the items get loaded in correctly
         lazyEnergyHandler = LazyOptional.of(() -> ENERGY_STORAGE);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
     }
 
     @Override
@@ -153,21 +182,26 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
         super.invalidateCaps();
         lazyItemHandler.invalidate(); // Makes sure the items get removed
         lazyEnergyHandler.invalidate();
+        lazyFluidHandler.invalidate();
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("deuterium_extractor_inventory", itemHandler.serializeNBT()); // Saves the inventory to the pKey
         pTag.putInt("energy", ENERGY_STORAGE.getEnergyStored());
+        pTag = FLUID_TANK.writeToNBT(pTag);
+
         super.saveAdditional(pTag);
     }
 
     @Override
     public void load(CompoundTag pTag) {
-        itemHandler.deserializeNBT(pTag.getCompound("deuterium_extractor_inventory")); // Loads the inventory from the pKey
         super.load(pTag);
+        itemHandler.deserializeNBT(pTag.getCompound("deuterium_extractor_inventory")); // Loads the inventory from the pKey
+
 
         ENERGY_STORAGE.setEnergy(pTag.getInt("energy"));
+        FLUID_TANK.readFromNBT(pTag);
     }
 
     /**
@@ -175,6 +209,7 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
      */
     public void tick(Level level, BlockPos blockPos, BlockState blockState) {
         fillUpOnEnergy(); // Placeholder for getting energy through wires or similar
+        fillUpOnFluid();
 
         if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
             increaseCraftingProcess();
@@ -183,11 +218,54 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
 
             if (hasProgressFinished()) {
                 craftItem();
+                extractFluid();
                 resetProgress();
             }
         } else {
             resetProgress();
         }
+    }
+
+    private void extractFluid() {
+        this.FLUID_TANK.drain(500, IFluidHandler.FluidAction.EXECUTE);
+    }
+
+    public FluidStack getFluid() {
+        return FLUID_TANK.getFluid();
+    }
+
+    private void fillUpOnFluid() {
+        if(hasFluidItemInSlot(FLUID_INPUT_SLOT)) {
+            transferItemFluidToTank(FLUID_INPUT_SLOT);
+        }
+    }
+
+    private void transferItemFluidToTank(int fluidInputSlot) {
+        this.itemHandler.getStackInSlot(fluidInputSlot).getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(
+                iFluidHandlerItem -> {
+                    int drainAmount = Math.min(this.FLUID_TANK.getSpace(), 1000);
+
+                    FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
+                    if(stack.getFluid() == Fluids.WATER) {
+                        stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.EXECUTE);
+                        fillTankWithFluid(stack, iFluidHandlerItem.getContainer());
+                    }
+                }
+        );
+    }
+
+    private void fillTankWithFluid(FluidStack stack, ItemStack container) {
+        this.FLUID_TANK.fill(new FluidStack(stack.getFluid(), stack.getAmount()), IFluidHandler.FluidAction.EXECUTE);
+
+        this.itemHandler.extractItem(FLUID_INPUT_SLOT, 1, false);
+        this.itemHandler.insertItem(FLUID_INPUT_SLOT, container, false);
+    }
+
+    private boolean hasFluidItemInSlot(int fluidInputSlot) {
+        return this.itemHandler.getStackInSlot(fluidInputSlot).getCount() > 0 &&
+                this.itemHandler.getStackInSlot(fluidInputSlot).getCapability(
+                        ForgeCapabilities.FLUID_HANDLER_ITEM
+                ).isPresent();
     }
 
     private void extractEnergy() {
@@ -239,7 +317,12 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
                 && canInsertItemIntoOutputSlot(resultItem.getItem())
-                && hasEnoughEnergyToCraft();
+                && hasEnoughEnergyToCraft()
+                && hasEnoughFluidToCraft();
+    }
+
+    private boolean hasEnoughFluidToCraft() {
+        return this.FLUID_TANK.getFluidAmount() >= 500;
     }
 
     private boolean hasEnoughEnergyToCraft() {
@@ -303,4 +386,6 @@ public class DeuteriumExtractorBlockEntity extends BlockEntity implements MenuPr
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         super.onDataPacket(net, pkt);
     }
+
+
 }

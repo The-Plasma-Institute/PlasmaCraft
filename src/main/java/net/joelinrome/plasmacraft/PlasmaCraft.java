@@ -28,7 +28,7 @@ import org.slf4j.Logger;
 @Mod(PlasmaCraft.MOD_ID)
 public class PlasmaCraft {
     public static final String MOD_ID = "plasmacraft";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public PlasmaCraft() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

@@ -3,6 +3,7 @@ package net.joelinrome.plasmacraft.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.joelinrome.plasmacraft.PlasmaCraft;
 import net.joelinrome.plasmacraft.screen.renderer.EnergyDisplayTooltipArea;
+import net.joelinrome.plasmacraft.screen.renderer.FluidTankRenderer;
 import net.joelinrome.plasmacraft.util.MouseUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.TooltipFlag;
 
 import java.util.Optional;
 
@@ -17,6 +19,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(PlasmaCraft.MOD_ID,"textures/gui/deuterium_extractor_gui.png");
     private EnergyDisplayTooltipArea energyInfoArea;
+    private FluidTankRenderer fluidRenderer;
 
     public DeuteriumExtractorScreen(DeuteriumExtractorMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -30,6 +33,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         this.titleLabelY = 10000;
         
         assignEnergyInfoArea();
+        assignFluidRenderer();
     }
 
     @Override
@@ -38,6 +42,21 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         int y = (height - imageHeight) / 2;
 
         renderEnergyAreaTooltip(pGuiGraphics, pMouseX, pMouseY, x, y);
+        renderFluidTooltipArea(pGuiGraphics, pMouseX, pMouseY, x, y);
+    }
+
+    private void renderFluidTooltipArea(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, int x, int y) {
+        int width = fluidRenderer.getWidth();
+        int height = fluidRenderer.getHeight();
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, 26, 11, width, height)) {
+            pGuiGraphics.renderTooltip(
+                    this.font,
+                    fluidRenderer.getTooltip(menu.blockEntity.getFluid(), TooltipFlag.Default.NORMAL),
+                    Optional.empty(),
+                    pMouseX - x,
+                    pMouseY - y
+            );
+        }
     }
 
     private void renderEnergyAreaTooltip(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, int x, int y) {
@@ -61,6 +80,10 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         );
     }
 
+    private void assignFluidRenderer() {
+        fluidRenderer = new FluidTankRenderer(64000, true, 16, 39);
+    }
+
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -74,7 +97,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         renderProgressArrow(guiGraphics, x, y);
 
         energyInfoArea.render(guiGraphics);
-//        fluidRenderer.render(guiGraphics, x + 26, y + 11, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics, x + 26, y + 11, menu.blockEntity.getFluid());
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {

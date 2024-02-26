@@ -54,5 +54,8 @@
   "block.plasmacraft.deuterium_extractor": "Deuterium Extractor",
 
   "creativetab.tutorial_tab": "Sapphire Tutorial Tab",
-  "creativetab.plasmacraft_tab": "PlasmaCraft"
+  "creativetab.plasmacraft_tab": "PlasmaCraft",
+
+  "plasmacraft.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "plasmacraft.tooltip.liquid.amount": "%s mB"
 }

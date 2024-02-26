@@ -5,7 +5,7 @@ import net.joelinrome.plasmacraft.block.ModBlocks;
 import net.joelinrome.plasmacraft.block.entity.ModBlockEntities;
 import net.joelinrome.plasmacraft.item.ModCreativeModTabs;
 import net.joelinrome.plasmacraft.item.ModItems;
-import net.joelinrome.plasmacraft.repice.ModRecipes;
+import net.joelinrome.plasmacraft.recipe.ModRecipes;
 import net.joelinrome.plasmacraft.screen.DeuteriumExtractorScreen;
 import net.joelinrome.plasmacraft.screen.GemPolishingStationScreen;
 import net.joelinrome.plasmacraft.screen.ModMenuTypes;

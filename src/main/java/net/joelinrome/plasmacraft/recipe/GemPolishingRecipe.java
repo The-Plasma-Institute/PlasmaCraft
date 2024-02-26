@@ -1,4 +1,4 @@
-package net.joelinrome.plasmacraft.repice;
+package net.joelinrome.plasmacraft.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

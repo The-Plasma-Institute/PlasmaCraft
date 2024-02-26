@@ -3,7 +3,7 @@ package net.joelinrome.plasmacraft.datagen.custom;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.joelinrome.plasmacraft.PlasmaCraft;
-import net.joelinrome.plasmacraft.repice.DeuteriumExtractorRecipe;
+import net.joelinrome.plasmacraft.recipe.DeuteriumExtractorRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
@@ -16,7 +16,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;

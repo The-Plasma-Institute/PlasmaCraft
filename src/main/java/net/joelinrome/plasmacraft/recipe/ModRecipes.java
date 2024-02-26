@@ -1,4 +1,4 @@
-package net.joelinrome.plasmacraft.repice;
+package net.joelinrome.plasmacraft.recipe;
 
 import net.joelinrome.plasmacraft.PlasmaCraft;
 import net.minecraft.world.item.crafting.RecipeSerializer;

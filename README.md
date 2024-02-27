@@ -39,9 +39,7 @@ Now that you've installed both of these create a new project specifying the java
 
 
 ## Installing the code
-Firstly install the code into a folder of your choosing:
-
-`git clone https://github.com/JoelLucaAdams/PlasmaCraft.git`
+Firstly install the code into a folder of your choosing by pressing the green code button at the top right of this page and copying the `git clone ...` command.
 
 Once installed open the folder from IntelliJ and check that SDK version is set to 17. To do this press the `ALT+;` keys or `cmd+;` on macOS.
 

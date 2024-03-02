@@ -125,9 +125,9 @@ repositories {
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
     // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    //flatDir {
+    // flatDir {
     //     dir 'libs'
-    //}
+    // }
     maven {
         // location of the maven that hosts JEI files
         name = "Jared's maven"
@@ -205,9 +205,9 @@ dependencies {
     compileOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge-api:${cct_version}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}"))
 
-    // Create: Crafts and additions (local dependency)
-    //implementation files('libs/createaddition-1.20.1-1.2.3.jar')
+    // Botarium
     implementation fg.deobf("curse.maven:botarium-704113:5118353")
+    // Create: New age
     implementation fg.deobf("curse.maven:create-new-age-905861:5080957")
 }
 

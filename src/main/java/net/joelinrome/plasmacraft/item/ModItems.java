@@ -1,6 +1,7 @@
 package net.joelinrome.plasmacraft.item;
 
 import net.joelinrome.plasmacraft.PlasmaCraft;
+import net.joelinrome.plasmacraft.fluids.ModFluids;
 import net.joelinrome.plasmacraft.item.custom.FuelItem;
 import net.joelinrome.plasmacraft.item.custom.MetalDetectorItem;
 import net.joelinrome.plasmacraft.item.custom.ModArmorItem;
@@ -55,6 +56,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> BAR_BRAWL_MUSIC_DISC = ITEMS.register("bar_brawl_music_disc",
             () -> new RecordItem(6, ModSounds.BAR_BRAWL, new Item.Properties().stacksTo(1), 2440)); // Song length in ticks
+
+    public static final RegistryObject<Item> DEUTERIUM_BUCKET = ITEMS.register("deuterium_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_DEUTERIUM,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

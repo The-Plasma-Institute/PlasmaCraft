@@ -4,6 +4,7 @@ import net.joelinrome.plasmacraft.PlasmaCraft;
 import net.joelinrome.plasmacraft.block.custom.DeuteriumExtractorBlock;
 import net.joelinrome.plasmacraft.block.custom.GemPolishingStationBlock;
 import net.joelinrome.plasmacraft.block.custom.SoundBlock;
+import net.joelinrome.plasmacraft.fluids.ModFluids;
 import net.joelinrome.plasmacraft.item.ModItems;
 import net.joelinrome.plasmacraft.sound.ModSounds;
 import net.minecraft.sounds.SoundEvents;
@@ -49,6 +50,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registerBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     public static final RegistryObject<Block> DEUTERIUM_EXTRACTOR_BLOCK = registerBlock("deuterium_extractor", () -> new DeuteriumExtractorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistryObject<LiquidBlock> DEUTERIUM_BLOCK = BLOCKS.register("deuterium_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_DEUTERIUM, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

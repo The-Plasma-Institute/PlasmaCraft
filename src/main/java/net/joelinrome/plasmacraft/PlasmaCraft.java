@@ -2,7 +2,9 @@ package net.joelinrome.plasmacraft;
 
 import com.mojang.logging.LogUtils;
 import net.joelinrome.plasmacraft.block.ModBlocks;
+import net.joelinrome.plasmacraft.fluids.ModFluidTypes;
 import net.joelinrome.plasmacraft.block.entity.ModBlockEntities;
+import net.joelinrome.plasmacraft.fluids.ModFluids;
 import net.joelinrome.plasmacraft.item.ModCreativeModTabs;
 import net.joelinrome.plasmacraft.item.ModItems;
 import net.joelinrome.plasmacraft.recipe.ModRecipes;
@@ -11,6 +13,8 @@ import net.joelinrome.plasmacraft.screen.GemPolishingStationScreen;
 import net.joelinrome.plasmacraft.screen.ModMenuTypes;
 import net.joelinrome.plasmacraft.sound.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +39,8 @@ public class PlasmaCraft {
 
         ModCreativeModTabs.register(modEventBus);
 
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModSounds.register(modEventBus);
@@ -81,6 +87,8 @@ public class PlasmaCraft {
             event.enqueueWork(() -> {
                 MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
                 MenuScreens.register(ModMenuTypes.DEUTERIUM_EXTRACTOR_MENU.get(), DeuteriumExtractorScreen::new);
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_DEUTERIUM.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_DEUTERIUM.get(), RenderType.translucent());
             });
         }
     }

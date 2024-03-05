@@ -57,5 +57,6 @@
   "creativetab.plasmacraft_tab": "PlasmaCraft",
 
   "plasmacraft.tooltip.liquid.amount.with.capacity": "%s / %s mB",
-  "plasmacraft.tooltip.liquid.amount": "%s mB"
+  "plasmacraft.tooltip.liquid.amount": "%s mB",
+  "item.plasmacraft.deuterium_bucket": "Deuterium bucket"
 }

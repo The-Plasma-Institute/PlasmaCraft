@@ -149,6 +149,13 @@ repositories {
             includeGroup("cc.tweaked")
         }
     }
+
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
@@ -197,6 +204,11 @@ dependencies {
     compileOnly("cc.tweaked:cc-tweaked-${minecraft_version}-core-api:${cct_version}")
     compileOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge-api:${cct_version}"))
     runtimeOnly(fg.deobf("cc.tweaked:cc-tweaked-${minecraft_version}-forge:${cct_version}"))
+
+    // Botarium
+    implementation fg.deobf("curse.maven:botarium-704113:5118353")
+    // Create: New age
+    implementation fg.deobf("curse.maven:create-new-age-905861:5080957")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

@@ -1,12 +1,8 @@
 package net.joelinrome.plasmacraft.fluids;
 
 import net.joelinrome.plasmacraft.PlasmaCraft;
-import net.joelinrome.plasmacraft.fluids.fluids.DeuteriumFluid;
-import net.joelinrome.plasmacraft.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.SoundAction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
@@ -14,8 +10,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.joml.Vector3f;
-
-import java.util.function.Supplier;
 
 public class ModFluidTypes {
     public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");

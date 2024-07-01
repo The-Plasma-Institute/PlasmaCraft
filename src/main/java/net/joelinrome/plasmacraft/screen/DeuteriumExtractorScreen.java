@@ -2,6 +2,7 @@ package net.joelinrome.plasmacraft.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.joelinrome.plasmacraft.PlasmaCraft;
+import net.joelinrome.plasmacraft.block.entity.DeuteriumExtractorBlockEntity;
 import net.joelinrome.plasmacraft.screen.renderer.EnergyDisplayTooltipArea;
 import net.joelinrome.plasmacraft.screen.renderer.FluidTankRenderer;
 import net.joelinrome.plasmacraft.util.MouseUtil;
@@ -51,7 +52,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         if(isMouseAboveArea(pMouseX, pMouseY, x, y, 26, 11, width, height)) {
             pGuiGraphics.renderTooltip(
                     this.font,
-                    fluidRenderer.getTooltip(menu.blockEntity.getFluid(), TooltipFlag.Default.NORMAL),
+                    fluidRenderer.getTooltip(menu.blockEntity.getFluidTank(DeuteriumExtractorBlockEntity.FLUID_ITEM_INPUT_SLOT).getFluid(), TooltipFlag.Default.NORMAL),
                     Optional.empty(),
                     pMouseX - x,
                     pMouseY - y
@@ -97,7 +98,7 @@ public class DeuteriumExtractorScreen extends AbstractContainerScreen<DeuteriumE
         renderProgressArrow(guiGraphics, x, y);
 
         energyInfoArea.render(guiGraphics);
-        fluidRenderer.render(guiGraphics, x + 26, y + 11, menu.blockEntity.getFluid());
+        fluidRenderer.render(guiGraphics, x + 26, y + 11, menu.blockEntity.getFluidTank(DeuteriumExtractorBlockEntity.FLUID_ITEM_INPUT_SLOT).getFluid());
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {

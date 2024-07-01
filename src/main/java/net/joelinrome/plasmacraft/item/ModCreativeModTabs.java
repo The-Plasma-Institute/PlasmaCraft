@@ -19,6 +19,7 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.plasmacraft_tab"))
                     .displayItems(((itemDisplayParameters, output) -> {
                         output.accept(ModBlocks.DEUTERIUM_EXTRACTOR_BLOCK.get());
+                        output.accept(ModItems.DEUTERIUM_BUCKET.get());
                     }))
                     .build());
 
